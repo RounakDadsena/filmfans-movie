@@ -1,17 +1,37 @@
 workflows:
   expo-android-build:
     name: Expo Android Build
-    max_build_duration: 60
+    max_build_duration: 120
     environment:
       node: 18
     scripts:
       - name: Install dependencies
         script: npm install
+
       - name: Expo Prebuild
         script: npx expo prebuild --platform android --clean
+
       - name: Make Gradlew executable
         script: chmod +x android/gradlew
+
+      - name: Create JS bundle assets folder
+        script: mkdir -p android/app/src/main/assets
+
+      - name: Bundle JS for Release
+        script: |
+          npx react-native bundle \
+            --platform android \
+            --dev false \
+            --entry-file index.js \
+            --bundle-output android/app/src/main/assets/index.android.bundle \
+            --assets-dest android/app/src/main/res
+
       - name: Build Release APK
-        script: cd android && ./gradlew assembleRelease
+        script: |
+          cd android
+          ./gradlew assembleRelease \
+            -x createBundleReleaseJsAndAssets \
+            --no-daemon
+
     artifacts:
       - android/app/build/outputs/**/*.apk
