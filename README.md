@@ -6,8 +6,8 @@
 <p align="center">🎬 Your ultimate Android app for streaming movies & series — ad-free.</p>
 
 <p align="center">
-  <a href="https://discord.gg/cr42m6maWy">
-    <img src="https://custom-icon-badges.demolab.com/badge/-Join_Discord-6567a5?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"/>
+  <a href="https://t.me/Filmfansmovie">
+    <img src="https://custom-icon-badges.demolab.com/badge/-Join_Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
   </a>
 </p>
 
