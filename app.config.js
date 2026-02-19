@@ -87,7 +87,7 @@ module.exports = () => {
 
   return {
     expo: {
-      name: 'Vega',
+      name: 'Filmfans movies',
       scheme: 'com.vega',
       displayName: 'Vega',
       jsEngine: 'hermes',
@@ -95,7 +95,7 @@ module.exports = () => {
       autolinking: {exclude: ['expo-splash-screen']},
       plugins,
       slug: 'vega',
-      version: '3.3.3',
+      version: '1.0.0',
       userInterfaceStyle: 'dark',
       experiments: {
         reactCompiler: true,

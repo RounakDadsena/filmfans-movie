@@ -47,14 +47,12 @@ const Settings = ({navigation}: Props) => {
   const handleProviderSelect = useCallback(
     (item: ProviderExtension) => {
       setProvider(item);
-      // Add haptic feedback
       if (settingsStorage.isHapticFeedbackEnabled()) {
         ReactNativeHapticFeedback.trigger('virtualKey', {
           enableVibrateFallback: true,
           ignoreAndroidSystemSettings: false,
         });
       }
-      // Navigate to home screen
       tabNavigation.navigate('HomeStack');
     },
     [setProvider, tabNavigation],
@@ -69,8 +67,8 @@ const Settings = ({navigation}: Props) => {
           isSelected ? 'bg-[#333333]' : 'bg-[#262626]'
         }`}
         style={{
-          width: Dimensions.get('window').width * 0.3, // Shows 2.5 items
-          height: 65, // Increased height
+          width: Dimensions.get('window').width * 0.3,
+          height: 65,
           borderWidth: 1.5,
           borderColor: isSelected ? primary : '#333333',
         }}>
@@ -239,21 +237,6 @@ const Settings = ({navigation}: Props) => {
                 </View>
               </TouchableNativeFeedback>
 
-              {/* Disable Providers */}
-              {/* <TouchableNativeFeedback
-                onPress={() => navigation.navigate('DisableProviders')}
-                background={TouchableNativeFeedback.Ripple('#333333', false)}>
-                <View className="flex-row items-center justify-between p-4 border-b border-[#262626]">
-                  <View className="flex-row items-center">
-                    <MaterialIcons name="block" size={22} color={primary} />
-                    <Text className="text-white ml-3 text-base">
-                      Disable Providers in Search
-                    </Text>
-                  </View>
-                  <Feather name="chevron-right" size={20} color="gray" />
-                </View>
-              </TouchableNativeFeedback> */}
-
               {/* Watch History */}
               <TouchableNativeFeedback
                 onPress={() => navigation.navigate('WatchHistoryStack')}
@@ -353,7 +336,7 @@ const Settings = ({navigation}: Props) => {
                 </View>
               </TouchableNativeFeedback>
 
-              {/* GitHub */}
+              {/* GitHub - Give a star */}
               <TouchableNativeFeedback
                 onPress={() => Linking.openURL(socialLinks.github)}
                 background={TouchableNativeFeedback.Ripple('#333333', false)}>
@@ -368,15 +351,38 @@ const Settings = ({navigation}: Props) => {
                 </View>
               </TouchableNativeFeedback>
 
-              {/* sponsore */}
+              {/* Telegram */}
               <TouchableNativeFeedback
-                onPress={() => Linking.openURL(socialLinks.sponsor)}
+                onPress={() => Linking.openURL('https://t.me/Filmfansmovie')}
+                background={TouchableNativeFeedback.Ripple('#333333', false)}>
+                <View className="flex-row items-center justify-between p-4 border-b border-[#262626]">
+                  <View className="flex-row items-center">
+                    <MaterialCommunityIcons
+                      name="telegram"
+                      size={22}
+                      color="#229ED9"
+                    />
+                    <Text className="text-white ml-3 text-base">
+                      Join Telegram
+                    </Text>
+                  </View>
+                  <Feather name="external-link" size={20} color="gray" />
+                </View>
+              </TouchableNativeFeedback>
+
+              {/* Fork attribution - Vega-app */}
+              <TouchableNativeFeedback
+                onPress={() =>
+                  Linking.openURL('https://github.com/Zenda-Cross/vega-app')
+                }
                 background={TouchableNativeFeedback.Ripple('#333333', false)}>
                 <View className="flex-row items-center justify-between p-4">
-                  <View className="flex-row items-center">
-                    <AntDesign name="heart" size={22} color="#ff69b4" />
-                    <Text className="text-white ml-3 text-base">
-                      Sponsor Project
+                  <View className="flex-row items-center flex-1">
+                    <AntDesign name="github" size={22} color={primary} />
+                    <Text
+                      className="text-gray-400 ml-3 text-sm flex-1"
+                      numberOfLines={2}>
+                      Fork of Vega-app by zenda-cross
                     </Text>
                   </View>
                   <Feather name="external-link" size={20} color="gray" />
