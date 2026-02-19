@@ -119,14 +119,12 @@ jobs:
 
       - name: Bundle JavaScript for Release
         run: |
-          npx react-native bundle \
+          npx expo export:embed \
             --platform android \
-            --dev false \
             --entry-file index.js \
             --bundle-output android/app/src/main/assets/index.android.bundle \
-            --assets-dest android/app/src/main/res
-
-      # ── Make gradlew executable ───────────────────────────────────────
+            --assets-dest android/app/src/main/res \
+            --dev false
       - name: Make gradlew executable
         run: chmod +x android/gradlew
 
