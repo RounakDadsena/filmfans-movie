@@ -8,9 +8,13 @@ workflows:
 
     scripts:
       - npm install
-      - npx expo prebuild --platform android
+      - npx expo prebuild --platform android --clean
       - chmod +x android/gradlew
-      - android/gradlew assembleRelease
+
+    working_directory: android
+
+    scripts:
+      - ./gradlew assembleRelease
 
     artifacts:
       - android/app/build/outputs/**/*.apk
